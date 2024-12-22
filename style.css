@@ -1,0 +1,125 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: cursive, Arial, Helvetica, sans-serif;
+}
+
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: white transparent;
+}
+
+body {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  background-image: url('assets/pattern.svg');
+  background-size: 200px;
+  place-content: center;
+}
+
+.container {
+  width: 430px;
+  height: 470px;
+  color: #fff;
+  position: relative;
+
+  @media (width <= 1111px) {
+    zoom: 0.5;
+  }
+
+  .left-tap {
+    width: 100%;
+    height: 25%;
+    background-image: linear-gradient(to top, #cdc1ff 50%, #a294f9 50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    font-weight: bold;
+    transform: skew(-5deg) rotate(-5deg);
+
+    &.left-tap-1 {
+      position: relative;
+      top: 20px;
+      transform-origin: right;
+      animation: leftTop1 0.2s linear both;
+    }
+
+    &.left-tap-2 {
+      position: relative;
+      top: 95px;
+      left: -4px;
+      transform-origin: right;
+      animation: leftTop1 0.2s linear both;
+      animation-delay: 0.4s;
+    }
+  }
+
+  .right-tap {
+    width: 96%;
+    height: 25%;
+    background-color: #8b7af6;
+    position: absolute;
+    left: 20px;
+    top: 23px;
+    z-index: -1;
+    transform-origin: 0% 50%;
+    transform: rotate(21deg);
+
+    &.right-tap-1 {
+      animation: rightTop1 0.2s linear both;
+      animation-delay: 0.2s;
+    }
+
+    &.right-tap-2 {
+      top: 232px;
+      left: 24px;
+      width: 70%;
+      height: 22.5%;
+      transform: rotate(21deg) skew(-10deg);
+      animation: rightTop2 0.2s linear both;
+      animation-delay: 0.6s;
+    }
+  }
+}
+
+@keyframes leftTop1 {
+  0% {
+    transform-origin: right;
+    transform: scaleX(0) skew(-5deg) rotate(-5deg);
+  }
+  100% {
+    transform-origin: left;
+    transform: scaleX(1) skew(-5deg) rotate(-5deg);
+  }
+}
+
+@keyframes rightTop1 {
+  0% {
+    transform-origin: 0% 50%;
+    transform: scaleX(0) rotate(21deg);
+  }
+  100% {
+    transform-origin: 0% 50%;
+    transform: scaleX(1) rotate(21deg);
+  }
+}
+
+@keyframes rightTop2 {
+  0% {
+    transform: scaleX(0) rotate(21deg) skew(-10deg);
+  }
+  100% {
+    transform: scaleX(1) rotate(21deg) skew(-10deg);
+  }
+}
